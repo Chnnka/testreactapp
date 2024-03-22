@@ -1,4 +1,3 @@
-const { response } = require('express');
 const User=require('./model');
 
 const getUsers=(req,res,next)=>{
@@ -46,5 +45,7 @@ const deleteUser= (req,res,next)=>{
       });
 }
 
-exports.getUsers=getUsers;
-exports.getUsersById=getUsersById;
+exports.getUsers = getUsers;
+exports.addUser = addUser;
+exports.updateUser = updateUser;
+exports.deleteUser = deleteUser;

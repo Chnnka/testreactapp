@@ -5,23 +5,35 @@ const controller = require('./controller');
 
 app.use(cors());
 
-app.use(express.urlencoded({
-  extended:true,
-}));
+app.use(
+  express.urlencoded({
+    extended:true,
+  })
+);
 
 app.use(express.json());
 
 app.get('/users',(req,res)=>{
-  var resObj=[];
-  controller.getUsers(users=>{
-    res.send(users);
+  controller.getUsers((req,res,next)=>{
+    res.send();
   });
 });
 
-app.get('/user',(req,res)=>{
-  const id=req.query.id;
-  controller.getUsersById(id,user=>{
-    res.send(user)
+app.post('/create-user',(req,res)=>{
+  controller.addUser(req.body,(callBack)=>{
+    res.send();
+  });
+});
+
+app.put('/update-user',(req,res)=>{
+  controller.updateUser(req.body,(callBack)=>{
+    res.send(callBack);
+  });
+});
+
+app.delete('/delete-user',(req,res)=>{
+  controller.deleteUser(req.body,(callBack)=>{
+    res.send(callBack);
   });
 });
  
