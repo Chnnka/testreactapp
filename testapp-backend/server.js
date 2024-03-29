@@ -8,12 +8,10 @@ const router = require('./router');
 
 
 const PORT = 3001;
-const HOST = '127.0.0.1';
+const HOST = 'localhost';
 
 app.use(cors());
 app.use(express.json());
-
-
 
 const connect = async() => {
   try {
@@ -29,6 +27,5 @@ connect();
 const server =app.listen(PORT,HOST,()=>{
   console.log(`Server is listenning to ${server.address().port}`)
 });
-
 
 app.use('/api',router);

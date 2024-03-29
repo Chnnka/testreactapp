@@ -14,6 +14,7 @@ const addUser=(req,res,next)=>{
   const user = new User({
     id:req.body.id,
     name:req.body.name,
+    age:req.body.age,
   });
   user.save()
       .then(response=>{
@@ -26,7 +27,7 @@ const addUser=(req,res,next)=>{
 
 const updateUser=(req,res,next)=>{
   const {id,name}=req.body;
-  User.updateOne({id:id},{$set:{name:name}})
+  User.updateOne({id:id},{$set:{name:name,age:age}})
       .then(response=>{
         res.json({response})
       })
